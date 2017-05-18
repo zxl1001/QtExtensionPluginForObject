@@ -12,7 +12,6 @@
  */
 #include "plugininterface.h"
 
-
 PluginInterFace::PluginInterFace(QObject *parent)
     :QObject(parent)
 {

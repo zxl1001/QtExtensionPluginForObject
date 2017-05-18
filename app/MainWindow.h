@@ -40,11 +40,12 @@ public slots:
 private slots:
     void on_listWidget_doubleClicked(const QModelIndex &index);
 
+    void on_pluginViewBtn_clicked();
+
 private:
     Ui::MainWindow *ui;
     QSettings *m_setting;
     ExtensionSystem::PluginManager plgManager;
-    ExtensionSystem::PluginDetailsView *m_view;
 };
 
 #endif // MAINWINDOW_H

@@ -27,6 +27,7 @@ void BDSChannelOnePlugin::extensionsInitialized()
 {
     qDebug()<<__FILE__<<__LINE__<<"BDSChannelOnePlugin::extensionsInitialized";
     BDSChannelOnePluginModel *model = new BDSChannelOnePluginModel;
+    model->setPluginName("BDSChannelOnePlugin");
     addAutoReleasedObject(model);
 }
 

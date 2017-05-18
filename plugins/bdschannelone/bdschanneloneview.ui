@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>474</width>
+    <width>604</width>
     <height>300</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <layout class="QVBoxLayout" name="verticalLayout" stretch="0,1">
+  <layout class="QVBoxLayout" name="verticalLayout" stretch="1">
    <property name="leftMargin">
     <number>0</number>
    </property>
@@ -27,14 +27,135 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QLabel" name="label">
-     <property name="text">
-      <string>QOpenGLWidget Plugin</string>
+    <widget class="QGroupBox" name="groupBox">
+     <property name="title">
+      <string>GPS Interpolation manager</string>
      </property>
+     <layout class="QGridLayout" name="gridLayout">
+      <item row="0" column="0">
+       <widget class="QLabel" name="label_2">
+        <property name="text">
+         <string>Interpolation way</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="2">
+       <widget class="QLabel" name="label_3">
+        <property name="text">
+         <string>Coefficient</string>
+        </property>
+        <property name="scaledContents">
+         <bool>false</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="1">
+       <widget class="QComboBox" name="comboBox">
+        <item>
+         <property name="text">
+          <string>Natural Neighbor</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Nearest Neighbor</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Inverse Distance to a Power</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Kriging</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Minimum Curvature</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Modified Shepard's Method</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Polynomial Regression</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Radial Basis Function</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Triangulation with Linear Interpolation</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Moving Average</string>
+         </property>
+        </item>
+        <item>
+         <property name="text">
+          <string>Local Polynomial</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="0" column="4">
+       <widget class="QPushButton" name="processBtn">
+        <property name="text">
+         <string>Process</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="3">
+       <widget class="QDoubleSpinBox" name="doubleSpinBox"/>
+      </item>
+      <item row="1" column="0" colspan="5">
+       <widget class="QFrame" name="frame">
+        <property name="frameShape">
+         <enum>QFrame::StyledPanel</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+        </layout>
+       </widget>
+      </item>
+     </layout>
     </widget>
-   </item>
-   <item>
-    <widget class="QOpenGLWidget" name="openGLWidget"/>
    </item>
   </layout>
  </widget>

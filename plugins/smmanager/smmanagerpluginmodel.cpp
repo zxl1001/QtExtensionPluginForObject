@@ -28,14 +28,32 @@ SMManagerPluginModel::~SMManagerPluginModel()
     }
 }
 
-QString SMManagerPluginModel::getPluginName()
+const QString &SMManagerPluginModel::getPluginName() const
 {
-    return "zxlSMManagerPluginModel";
+    return m_pluginName;
 }
 
-QWidget *SMManagerPluginModel::getWidget()
+QWidget *SMManagerPluginModel::getWidget() const
 {
     return m_widget;
+}
+
+const QMimeData &SMManagerPluginModel::getMineData() const
+{
+    return m_mineData;
+}
+
+void SMManagerPluginModel::setMimeData(const MIMEDATA_TYPE &mimetype, const QVariant &data)
+{
+    if(mimetype == MIMEDATA_TYPE::MIMEDATA_BYTEARRAY)
+    {
+        m_mineData.setData(MIMEDATA_BYTEARRAY_STRING, data.toByteArray());
+    }
+}
+
+void SMManagerPluginModel::setPluginName(const QString &pluginName)
+{
+    m_pluginName = pluginName;
 }
 //namespace end
 }

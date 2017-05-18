@@ -23,9 +23,11 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 
 SOURCES += main.cpp\
-        MainWindow.cpp
+        MainWindow.cpp \
+    plugindialog.cpp
 
-HEADERS  += MainWindow.h
+HEADERS  += MainWindow.h \
+    plugindialog.h
 
 FORMS    += MainWindow.ui
 

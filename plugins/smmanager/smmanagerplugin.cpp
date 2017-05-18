@@ -27,6 +27,7 @@ void SMManagerPlugin::extensionsInitialized()
 {
     qDebug()<<__FILE__<<__LINE__<<"SMManagerPlugin::extensionsInitialized";
     SMManagerPluginModel *model = new SMManagerPluginModel;
+    model->setPluginName("SMManagerPlugin");
     addAutoReleasedObject(model);
 }
 

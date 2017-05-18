@@ -23,11 +23,16 @@ public:
     explicit SMManagerPluginModel(QObject *parent = 0);
     virtual ~SMManagerPluginModel();
 
-    virtual QString getPluginName();
-    virtual QWidget * getWidget();
+    virtual const QString &getPluginName() const;
+    virtual void setPluginName(const QString &pluginName);
+    virtual QWidget *getWidget() const;
+    virtual const QMimeData &getMineData() const;
+    virtual void setMimeData(const MIMEDATA_TYPE &mimetype, const QVariant &data);
+
 
 private:
     SMManagerView *m_widget;
+    QString m_pluginName;
 };
 }
 #endif // SMMANAGERPLUGINMODEL_H

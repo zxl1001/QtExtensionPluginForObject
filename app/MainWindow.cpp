@@ -12,6 +12,7 @@
  */
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include "plugindialog.h"
 #include "plugininterface/plugininterface.h"
 
 static const char PLUGIN_PATH[] = "/plugins";
@@ -19,8 +20,7 @@ static const char PLUGIN_PATH[] = "/plugins";
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    m_setting(Q_NULLPTR),
-    m_view(new ExtensionSystem::PluginDetailsView(this))
+    m_setting(Q_NULLPTR)
 {
     ui->setupUi(this);
     QVector<QWidget *> vector;
@@ -33,8 +33,6 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->stackedWidget->removeWidget(vector[i]);
     }
 
-    ui->viewDetailFrame->layout()->addWidget(m_view);
-
     m_setting = new QSettings("ZXL1001");
     QStringList plugingPath;
     plugingPath.append(qApp->applicationDirPath() + QLatin1String(PLUGIN_PATH));
@@ -43,11 +41,12 @@ MainWindow::MainWindow(QWidget *parent) :
     ExtensionSystem::PluginManager::setGlobalSettings(m_setting);
     ExtensionSystem::PluginManager::setPluginPaths(plugingPath);
 
-    const ExtensionSystem::PluginSpecSet plugins = ExtensionSystem::PluginManager::plugins();
-    foreach (ExtensionSystem::PluginSpec *spec, plugins) {
-        qDebug()<<spec->name()<<spec->hasError()<<spec->state();
-        ui->listWidget->addItem(spec->name());
-    }
+//    const ExtensionSystem::PluginSpecSet plugins = ExtensionSystem::PluginManager::plugins();
+//    foreach (ExtensionSystem::PluginSpec *spec, plugins) {
+//        qDebug()<<spec->name()<<spec->hasError()<<spec->state();
+//        ui->listWidget->addItem(spec->name());
+
+//    }
     ExtensionSystem::PluginManager::loadPlugins();
 
     if(ExtensionSystem::PluginManager::hasError())
@@ -71,7 +70,13 @@ void MainWindow::pluginObjectAdded(QObject *obj)
     PluginInterFace *item = dynamic_cast<PluginInterFace*>(obj);
     if(item != Q_NULLPTR)
     {
-        qDebug()<<item->getPluginName();
+        QString pluginName = item->getPluginName();
+        ui->listWidget->addItem(pluginName);
+        if(pluginName == "BDSChannelOnePlugin")
+        {
+            item->setMimeData(MIMEDATA_TYPE::MIMEDATA_BYTEARRAY, "50,80,190,7,26,353,602,884,25,198,499");
+            item->setMimeData(MIMEDATA_TYPE::MIMEDATA_IMAGE, QImage("/home/zxl/Pictures/Screenshot from 2017-04-24 17:42:48.png"));
+        }
         QWidget * widget = item->getWidget();
         if(widget != Q_NULLPTR)
         {
@@ -83,7 +88,12 @@ void MainWindow::pluginObjectAdded(QObject *obj)
 
 void MainWindow::on_listWidget_doubleClicked(const QModelIndex &index)
 {
-    const ExtensionSystem::PluginSpecSet plugins = ExtensionSystem::PluginManager::plugins();
     ui->stackedWidget->setCurrentIndex(index.row());
-    m_view->update(plugins[index.row()]);
+}
+
+void MainWindow::on_pluginViewBtn_clicked()
+{
+    qDebug()<<"aaaa";
+    PluginDialog d(Q_NULLPTR);
+    d.exec();
 }

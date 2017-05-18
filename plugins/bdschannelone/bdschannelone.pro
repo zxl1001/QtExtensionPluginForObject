@@ -17,12 +17,14 @@ CONFIG   += plugin
 HEADERS += \
     bdschanneloneplugin.h \
     bdschanneloneview.h \
-    bdschannelonepluginmodel.h
+    bdschannelonepluginmodel.h \
+    graphicsview.h
 
 SOURCES += \
     bdschanneloneplugin.cpp \
     bdschanneloneview.cpp \
-    bdschannelonepluginmodel.cpp
+    bdschannelonepluginmodel.cpp \
+    graphicsview.cpp
 
 
 OTHER_FILES += \
